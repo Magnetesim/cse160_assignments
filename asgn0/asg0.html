@@ -9,6 +9,34 @@
     <canvas id="example" width="400" height="400">
       Please use a browser that supports "canvas"
     </canvas>
+
+    <br>
+    v1:
+    <input type="text" id="xCoord_v1" placeholder="X">
+    <input type="text" id="yCoord_v1" placeholder="Y">
+    <br>
+    v2:
+    <input type="text" id="xCoord_v2" placeholder="X">
+    <input type="text" id="yCoord_v2" placeholder="Y">
+    <br>
+    <input type="button" value="Draw" onclick="handleDrawEvent()">
+    <br>
+    Operation:
+    <select id="operation">
+    <option value="add">Add</option>
+    <option value="sub">Subtract</option>
+    <option value="mul">Multiply</option>
+    <option value="div">Division</option>
+    <option value="mag">Magnitude</option>
+    <option value="norm">Normalize</option>
+    <option value="angle">Angle Between</option>
+    <option value="area">Area</option>
+    </select>
+    Scalar: <input type="number" id="scalar" placeholder="scalar">
+    <br>
+    <input type="button" value="Draw" onclick="handleDrawOperationEvent()">
+
+
     <script src="lib/cuon-matrix-cse160.js"></script>
     <script src="asg0.js"></script>
   </body>
