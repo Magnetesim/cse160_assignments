@@ -2,13 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Draw a point (1)</title>
+    <title>Assignment 1 - Painting</title>
   </head>
 
   <body onload="main()">
     <canvas id="webgl" width="400" height="400">
-    Please use a browser that supports "canvas"
+      Please use a browser that supports "canvas"
     </canvas>
+
+    <p>
+      <button type="button" id="pointButton">Point</button>
+      <button type="button" id="triangleButton">Triangle</button>
+      <button type="button" id="circleButton">Circle</button>
+      <button type="button" id="clearButton">Clear</button>
+      <button type="button" id="drawPictureButton">Draw Picture</button>
+    </p>
+
+    <p>
+      Red
+      <input type="range" id="redSlide" min="0" max="100" value="100" />
+      Green
+      <input type="range" id="greenSlide" min="0" max="100" value="0" />
+      Blue
+      <input type="range" id="blueSlide" min="0" max="100" value="0" />
+    </p>
+
+    <p>
+      Size
+      <input type="range" id="sizeSlide" min="5" max="40" value="10" />
+      Segments
+      <input type="range" id="segmentSlide" min="3" max="24" value="10" />
+    </p>
+
+    <p>
+      Awesome feature: drag on the canvas to paint continuously.
+    </p>
 
     <script src="../lib/webgl-utils.js"></script>
     <script src="../lib/webgl-debug.js"></script>
