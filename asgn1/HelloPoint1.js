@@ -252,24 +252,46 @@ function drawTriangle(vertices) {
 function drawPicture() {
   renderAllShapes();
 
-  // Replace the triangles below with your own picture.
-  // The assignment wants a picture made from WebGL triangles,
-  // typically at least 20 triangles for the final version.
-  // making image out of triangles, prob around 20
   let picture = [
-    // Example starter triangles. Delete or edit these.
-    // basic triangles here
-    { color: [0.2, 0.6, 0.9, 1.0], vertices: [-0.8, -0.8, 0.8, -0.8, -0.8, 0.0] },
-    { color: [0.2, 0.6, 0.9, 1.0], vertices: [0.8, -0.8, 0.8, 0.0, -0.8, 0.0] },
+    // box: Front face (brown)
+    // Split the front rectangle into 2 triangles
+    { color: [0.55, 0.27, 0.07, 1.0], vertices: [-0.65, 0.75,  0.35, 0.75,  -0.65, -0.65] },
+    { color: [0.55, 0.27, 0.07, 1.0], vertices: [0.35, 0.75,   0.35, -0.65,  -0.65, -0.65] },
 
-    // im gonna:
-    // sketch on paper first.
-    // break the picture into triangles.
-    // add one triangle at a time here.
-    // use the Draw Picture button often while adjusting coordinates to see changes
+    // box: Right side panel (darker brown, perspective)
+    { color: [0.40, 0.20, 0.05, 1.0], vertices: [0.35, 0.75,   0.75, 0.55,   0.75, -0.50] },
+    { color: [0.40, 0.20, 0.05, 1.0], vertices: [0.35, 0.75,   0.35, -0.65,  0.75, -0.50] },
 
-    // template:
-    // { color: [r, g, b, 1.0], vertices: [x1, y1, x2, y2, x3, y3] },
+    // box: Bottom perspective piece (even darker brown)
+    { color: [0.30, 0.15, 0.03, 1.0], vertices: [-0.65, -0.65,  0.35, -0.65,  0.75, -0.50] },
+    { color: [0.30, 0.15, 0.03, 1.0], vertices: [-0.65, -0.65,  0.20, -0.80,  0.75, -0.50] },
+
+    // LETTER M (red, upper portion of front face)
+    // left vertical bar of M
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.55, 0.60,  -0.42, 0.60,  -0.55, 0.10] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.42, 0.60,  -0.42, 0.10,  -0.55, 0.10] },
+
+    // Right vertical bar of M
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.12, 0.60,   0.25, 0.60,   0.25, 0.10] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.12, 0.60,   0.12, 0.10,   0.25, 0.10] },
+
+    // Left diagonal stroke of M (top-left down to center-bottom point)
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.55, 0.60,  -0.42, 0.60,  -0.17, 0.30] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.42, 0.60,  -0.10, 0.25,  -0.17, 0.30] },
+
+    // Right diagonal stroke of M (top-right down to center-bottom point)
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.12, 0.60,   0.25, 0.60,   0.02, 0.30] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.12, 0.60,  -0.10, 0.25,   0.02, 0.30] },
+    // LETTER H (red, lower portion of front face)
+    // Left vertical bar of H
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.55, 0.05,  -0.45, 0.05,  -0.45, -0.55] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.55, 0.05,  -0.55, -0.55,  -0.45, -0.55] },
+    // Right vertical bar of H
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.15, 0.05,   0.25, 0.05,   0.25, -0.55] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.15, 0.05,   0.15, -0.55,   0.25, -0.55] },
+    // Crossbar of H (horizontal middle bar)
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [-0.45, -0.18,  0.15, -0.18,  -0.45, -0.28] },
+    { color: [0.9, 0.1, 0.1, 1.0], vertices: [0.15, -0.18,   0.15, -0.28,  -0.45, -0.28] },
   ];
 
   for (let i = 0; i < picture.length; i++) {
