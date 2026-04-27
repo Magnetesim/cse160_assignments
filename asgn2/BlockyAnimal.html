@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocky Camel</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas>
+
+    <p id="performance">FPS: --</p>
+
+    <p>
+      <button type="button" id="animOnButton">Animation ON</button>
+      <button type="button" id="animOffButton">Animation OFF</button>
+    </p>
+
+    <p>
+      Global Rotation
+      <input type="range" id="globalRotation" min="0" max="360" value="30" />
+    </p>
+
+    <p>
+      Front Left Thigh
+      <input type="range" id="lfThigh" min="-45" max="45" value="0" />
+      Front Left Calf
+      <input type="range" id="lfCalf" min="-45" max="45" value="0" />
+      Front Left Foot
+      <input type="range" id="lfFoot" min="-30" max="30" value="0" />
+    </p>
+
+    <p>
+      Front Right Thigh
+      <input type="range" id="rfThigh" min="-45" max="45" value="0" />
+      Front Right Calf
+      <input type="range" id="rfCalf" min="-45" max="45" value="0" />
+      Front Right Foot
+      <input type="range" id="rfFoot" min="-30" max="30" value="0" />
+    </p>
+
+    <p>
+      Back Left Thigh
+      <input type="range" id="lbThigh" min="-45" max="45" value="0" />
+      Back Left Calf
+      <input type="range" id="lbCalf" min="-45" max="45" value="0" />
+      Back Left Foot
+      <input type="range" id="lbFoot" min="-30" max="30" value="0" />
+    </p>
+
+    <p>
+      Back Right Thigh
+      <input type="range" id="rbThigh" min="-45" max="45" value="0" />
+      Back Right Calf
+      <input type="range" id="rbCalf" min="-45" max="45" value="0" />
+      Back Right Foot
+      <input type="range" id="rbFoot" min="-30" max="30" value="0" />
+    </p>
+
+    <p>
+      Neck
+      <input type="range" id="neck" min="-30" max="30" value="0" />
+      Head
+      <input type="range" id="head" min="-30" max="30" value="0" />
+      Tail
+      <input type="range" id="tail" min="-45" max="45" value="0" />
+    </p>
+
+    <p>
+      <strong>Controls:</strong> Drag on canvas to rotate. Shift+click to poke the camel.
+    </p>
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="BlockyAnimal.js"></script>
+  </body>
+</html>
