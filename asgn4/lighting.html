@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 4 - Lighting</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div>
+        <h1>Assignment 4: Lighting</h1>
+        <p>
+          Keyboard camera: <strong>W/A/S/D</strong> move, <strong>R/F</strong> up/down,
+          <strong>Arrow keys</strong> look around.
+        </p>
+        <p class="hint">
+          Serve this folder over HTTP so <code>head.obj</code> can load correctly.
+        </p>
+      </div>
+      <div class="status-panel">
+        <div><strong>OBJ status:</strong> <span id="obj-status">Waiting to load…</span></div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="canvas-panel">
+        <canvas id="gl-canvas" width="1280" height="720"></canvas>
+      </section>
+
+      <aside class="controls-panel">
+        <section class="controls-group">
+          <h2>Global</h2>
+          <label class="checkbox-row">
+            <input id="lighting-enabled" type="checkbox" checked />
+            <span>Lighting enabled</span>
+          </label>
+          <label class="checkbox-row">
+            <input id="normal-visualization" type="checkbox" />
+            <span>Normal visualization</span>
+          </label>
+        </section>
+
+        <section class="controls-group">
+          <h2>Point light position</h2>
+
+          <div class="control-row">
+            <label for="light-theta-range">Azimuth θ</label>
+            <input id="light-theta-range" type="range" min="0" max="360" step="1" value="35" />
+            <input id="light-theta-number" type="number" min="0" max="360" step="1" value="35" />
+          </div>
+          <label class="checkbox-row compact">
+            <input id="light-theta-animate" type="checkbox" checked />
+            <span>Animate θ</span>
+          </label>
+
+          <div class="control-row">
+            <label for="light-phi-range">Elevation φ</label>
+            <input id="light-phi-range" type="range" min="0" max="180" step="1" value="55" />
+            <input id="light-phi-number" type="number" min="0" max="180" step="1" value="55" />
+          </div>
+          <label class="checkbox-row compact">
+            <input id="light-phi-animate" type="checkbox" />
+            <span>Animate φ</span>
+          </label>
+
+          <label class="checkbox-row compact">
+            <input id="point-light-enabled" type="checkbox" checked />
+            <span>Point light enabled</span>
+          </label>
+        </section>
+
+        <section class="controls-group">
+          <h2>Light color</h2>
+
+          <div class="control-row">
+            <label for="light-r-range">R</label>
+            <input id="light-r-range" type="range" min="0" max="1" step="0.01" value="1" />
+            <input id="light-r-number" type="number" min="0" max="1" step="0.01" value="1" />
+          </div>
+
+          <div class="control-row">
+            <label for="light-g-range">G</label>
+            <input id="light-g-range" type="range" min="0" max="1" step="0.01" value="0.92" />
+            <input id="light-g-number" type="number" min="0" max="1" step="0.01" value="0.92" />
+          </div>
+
+          <div class="control-row">
+            <label for="light-b-range">B</label>
+            <input id="light-b-range" type="range" min="0" max="1" step="0.01" value="0.82" />
+            <input id="light-b-number" type="number" min="0" max="1" step="0.01" value="0.82" />
+          </div>
+        </section>
+
+        <section class="controls-group">
+          <h2>Spotlight</h2>
+
+          <div class="control-row">
+            <label for="spot-theta-range">Direction θ</label>
+            <input id="spot-theta-range" type="range" min="0" max="360" step="1" value="220" />
+            <input id="spot-theta-number" type="number" min="0" max="360" step="1" value="220" />
+          </div>
+
+          <div class="control-row">
+            <label for="spot-phi-range">Direction φ</label>
+            <input id="spot-phi-range" type="range" min="0" max="180" step="1" value="70" />
+            <input id="spot-phi-number" type="number" min="0" max="180" step="1" value="70" />
+          </div>
+
+          <div class="control-row">
+            <label for="spot-cutoff-range">Cutoff</label>
+            <input id="spot-cutoff-range" type="range" min="1" max="90" step="1" value="22" />
+            <input id="spot-cutoff-number" type="number" min="1" max="90" step="1" value="22" />
+          </div>
+
+          <label class="checkbox-row compact">
+            <input id="spotlight-enabled" type="checkbox" checked />
+            <span>Spotlight enabled</span>
+          </label>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="../lib/webgl-utils.js"></script>
+  <script src="../lib/webgl-debug.js"></script>
+  <script src="../lib/cuon-utils.js"></script>
+  <script src="../lib/cuon-matrix.js"></script>
+  <script src="lighting.js"></script>
+</body>
+</html>
