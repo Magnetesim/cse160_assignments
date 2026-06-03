@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Liminal Checkerboard — CSE 160 Assignment 5</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      color: #fff;
+      font-family: monospace;
+    }
+    #canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      cursor: crosshair;
+    }
+    .overlay {
+      position: fixed;
+      pointer-events: none;
+      user-select: none;
+    }
+    #hud {
+      top: 16px;
+      left: 16px;
+      font-size: 18px;
+      color: #fff;
+      text-shadow: 0 0 4px #000;
+    }
+    #hud .label { color: #aaa; }
+    #hud .count { color: #ff4040; font-weight: bold; }
+    #clock-hits {
+      top: 44px;
+      left: 16px;
+      font-size: 13px;
+      color: #ffcc66;
+      text-shadow: 0 0 4px #000;
+      display: none;
+    }
+    #flash {
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+    }
+    #instructions {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 24px 32px;
+      border: 1px solid #444;
+      max-width: 420px;
+    }
+    #instructions h1 {
+      margin: 0 0 12px 0;
+      font-size: 24px;
+      letter-spacing: 4px;
+      color: #ddd;
+    }
+    #instructions p { margin: 6px 0; font-size: 14px; color: #ccc; }
+    #instructions .key { color: #ff8080; }
+    #win-message {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px 32px;
+      border: 1px solid #ff4040;
+      font-size: 22px;
+      display: none;
+    }
+    #wow-note {
+      bottom: 10px;
+      left: 10px;
+      max-width: 360px;
+      color: #888;
+      font-size: 11px;
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 8px 10px;
+    }
+    #wow-note strong { color: #ff8080; }
+    #attribution {
+      bottom: 10px;
+      right: 10px;
+      max-width: 360px;
+      color: #777;
+      font-size: 10px;
+      text-align: right;
+      line-height: 1.4;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 6px 8px;
+    }
+    #attribution a { color: #aaa; }
+    #crosshair {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+    }
+  </style>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/",
+      "cannon-es": "https://cdn.jsdelivr.net/npm/cannon-es@0.20.0/dist/cannon-es.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <div id="hud" class="overlay">
+    <span class="label">ORBS:</span>
+    <span class="count" id="orb-count">0</span>
+    <span class="label">/ 3</span>
+  </div>
+
+  <div id="clock-hits" class="overlay">
+    Clock hits: <span id="clock-hit-count">0</span> / 5
+  </div>
+
+  <div id="instructions" class="overlay">
+    <h1>LIMINAL CHECKERBOARD</h1>
+    <p>Click to explore</p>
+    <p><span class="key">W A S D</span> &nbsp;Move &nbsp;|&nbsp; <span class="key">Mouse</span> &nbsp;Look</p>
+    <p><span class="key">Left Click</span> &nbsp;Shoot &nbsp;|&nbsp; <span class="key">R</span> &nbsp;Reset</p>
+    <p>Find the 3 glowing red orbs.</p>
+  </div>
+
+  <div id="win-message" class="overlay">
+    All orbs collected!<br>
+    <span style="font-size:13px; color:#ccc; display:block; margin-top:8px; max-width:300px;">
+      You've noticed the clock, right? Shoot it five times and see what happens.
+    </span>
+    <span style="font-size:14px; color:#aaa;">Press R to reset</span>
+  </div>
+
+  <div id="crosshair" class="overlay"></div>
+  <div id="flash" class="overlay"></div>
+
+  <div id="wow-note" class="overlay">
+    <strong>Wow Feature:</strong>
+    Interactive first-person exploration with physics.
+    Collect 3 glowing red orbs hidden among the abstract geometry.
+    Walk into dynamic objects to send them tumbling.
+    Left-click to fire a physics projectile. Press R to reset.
+  </div>
+
+  <div id="attribution" class="overlay">
+    3D Models (CC-BY) via Poly Pizza:<br>
+    Knight &middot; Pawn &middot; Analog Clock
+    &mdash; by Poly by Google.<br>
+    <a href="ATTRIBUTION.md" target="_blank">Full attribution</a>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
